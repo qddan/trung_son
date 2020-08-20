@@ -3,7 +3,7 @@ import 'package:trung_son/components/custom_suffix_icon.dart';
 import 'package:trung_son/components/default_button.dart';
 import 'package:trung_son/components/form_error.dart';
 import 'package:trung_son/constants.dart';
-import 'package:trung_son/screens/home/home_screen.dart';
+import 'package:trung_son/screens/cart/cart_screen.dart';
 import 'package:trung_son/size_config.dart';
 
 class SignForm extends StatefulWidget {
@@ -52,7 +52,7 @@ class _SignFormState extends State<SignForm> {
 //              if (_fromKey.currentState.validate()) {
 //                _fromKey.currentState.save();
 //              }
-              Navigator.pushNamed(context, HomeScreen.routeName);
+              Navigator.pushNamed(context, CartScreen.routeName);
             },
           )
         ],
