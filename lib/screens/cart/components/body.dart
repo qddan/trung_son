@@ -140,68 +140,6 @@ class _BodyPageState extends State<BodyPage> {
           ])
         ])
       ]),
-      bottomNavigationBar: Material(
-          elevation: 7.0,
-          color: Colors.white,
-          child: Container(
-              height: 50.0,
-              width: MediaQuery.of(context).size.width,
-              color: Colors.white,
-              child: Padding(
-                padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-                child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      InkWell(
-                        onTap: () {},
-                        child: Container(
-                          height: 50.0,
-                          width: 50.0,
-                          color: Colors.white,
-                          child: Icon(
-                            Icons.shopping_basket,
-                            color: Colors.grey,
-                          ),
-                        ),
-                      ),
-                      InkWell(
-                        onTap: () {},
-                        child: Container(
-                          height: 50.0,
-                          width: 50.0,
-                          color: Colors.white,
-                          child: Icon(
-                            Icons.account_box,
-                            color: Colors.grey,
-                          ),
-                        ),
-                      ),
-                      InkWell(
-                        onTap: () {},
-                        child: Container(
-                          height: 50.0,
-                          width: 50.0,
-                          color: Colors.white,
-                          child: Icon(
-                            Icons.shopping_cart,
-                            color: Colors.yellow,
-                          ),
-                        ),
-                      ),
-                      InkWell(
-                        onTap: () {},
-                        child: Container(
-                          height: 50.0,
-                          width: 50.0,
-                          color: Colors.white,
-                          child: Icon(
-                            Icons.account_box,
-                            color: Colors.grey,
-                          ),
-                        ),
-                      ),
-                    ]),
-              ))),
     );
   }
 

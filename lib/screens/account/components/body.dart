@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:trung_son/constants.dart';
 
 class Body extends StatelessWidget {
   // This widget is the root of your application.
@@ -268,19 +267,6 @@ class _BodyPageState extends State<BodyPage>
               Icons.person)
         ])
       ]),
-      bottomNavigationBar: Material(
-        color: Colors.white,
-        child: TabBar(
-          controller: controller,
-          indicatorColor: kPrimaryColor,
-          tabs: <Widget>[
-            Tab(icon: Icon(Icons.event_seat, color: Colors.grey)),
-            Tab(icon: Icon(Icons.timer, color: Colors.grey)),
-            Tab(icon: Icon(Icons.shopping_cart, color: Colors.grey)),
-            Tab(icon: Icon(Icons.person_outline, color: kPrimaryColor))
-          ],
-        ),
-      ),
     );
   }
 
