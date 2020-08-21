@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:trung_son/components/utils.dart';
+import 'package:trung_son/helper/product.dart';
+import 'package:trung_son/models/products_root.dart';
 import 'package:trung_son/screens/home/components/item_card.dart';
 
 class Body extends StatelessWidget {
@@ -18,6 +20,29 @@ class BodyPage extends StatefulWidget {
 }
 
 class _BodyPageState extends State<BodyPage> {
+  Products product = new Products();
+  ProductRoot products;
+
+  void handleInit() async {
+    await product.getProducts();
+    products = product.productRoot;
+    List<Items> items = products.items;
+    print('items $items');
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    handleInit();
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

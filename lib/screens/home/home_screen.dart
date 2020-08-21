@@ -48,21 +48,29 @@ class _HomeScreenState extends State<HomeScreen>
               onTap: onTabTapped,
               tabs: [
                 Tab(
-                    icon: Icon(Icons.event_seat,
-                        color:
-                            _currentIndex == 0 ? kPrimaryColor : Colors.grey)),
+                  icon: Icon(
+                    Icons.home,
+                    color: _currentIndex == 0 ? kPrimaryColor : Colors.grey,
+                  ),
+                ),
                 Tab(
-                    icon: Icon(Icons.favorite,
-                        color:
-                            _currentIndex == 1 ? kPrimaryColor : Colors.grey)),
+                  icon: Icon(
+                    Icons.favorite,
+                    color: _currentIndex == 1 ? kPrimaryColor : Colors.grey,
+                  ),
+                ),
                 Tab(
-                    icon: Icon(Icons.shopping_cart,
-                        color:
-                            _currentIndex == 2 ? kPrimaryColor : Colors.grey)),
+                  icon: Icon(
+                    Icons.shopping_cart,
+                    color: _currentIndex == 2 ? kPrimaryColor : Colors.grey,
+                  ),
+                ),
                 Tab(
-                    icon: Icon(Icons.person_outline,
-                        color:
-                            _currentIndex == 3 ? kPrimaryColor : Colors.grey)),
+                  icon: Icon(
+                    Icons.person_outline,
+                    color: _currentIndex == 3 ? kPrimaryColor : Colors.grey,
+                  ),
+                ),
               ],
             ),
           )),
