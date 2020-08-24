@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:trung_son/components/utils.dart';
 import 'package:trung_son/size_config.dart';
 
-Widget itemCard(String title, String imgPath, bool isFavorite) {
+Widget ItemProduct(
+    {String title, String imgPath, int price, bool isFavorite = true}) {
   return Padding(
     padding: EdgeInsets.only(left: 15.0, right: 15.0, top: 15.0),
     child: Container(
@@ -14,23 +15,24 @@ Widget itemCard(String title, String imgPath, bool isFavorite) {
           Container(
             width: 140.0,
             height: 150.0,
-            decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage(imgPath), fit: BoxFit.cover)),
+            child: Image.network(imgPath),
           ),
           SizedBox(width: 4.0),
           Column(
             children: <Widget>[
               Row(
                 children: <Widget>[
-                  Text(
-                    title,
-                    style: TextStyle(
-                        fontFamily: 'Quicksand',
-                        fontSize: 17.0,
-                        fontWeight: FontWeight.bold),
+                  Container(
+                    width: 175.0,
+                    child: Text(
+                      title,
+                      style: TextStyle(
+                          fontFamily: 'Quicksand',
+                          fontSize: 17.0,
+                          fontWeight: FontWeight.bold),
+                    ),
                   ),
-                  SizedBox(width: 45.0),
+                  SizedBox(width: 20.0),
                   Material(
                     elevation: isFavorite ? 0.0 : 2.0,
                     borderRadius: BorderRadius.circular(20.0),
@@ -55,7 +57,7 @@ Widget itemCard(String title, String imgPath, bool isFavorite) {
               Container(
                 width: 175.0,
                 child: Text(
-                  'Scandinavian small sized double sofa imported full leather / Dale Italia oil wax leather black',
+                  'Description',
                   textAlign: TextAlign.left,
                   style: TextStyle(
                       fontFamily: 'Quicksand',
@@ -73,7 +75,7 @@ Widget itemCard(String title, String imgPath, bool isFavorite) {
                     color: Color(getColorHexFromStr('#F9C335')),
                     child: Center(
                       child: Text(
-                        '\$248',
+                        '\$ $price',
                         style: TextStyle(
                             color: Colors.white,
                             fontFamily: 'Quicksand',
