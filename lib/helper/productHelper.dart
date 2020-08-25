@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:trung_son/models/product/product.dart';
 
 Future<Product> getProducts({int currentPage, int pageSize}) async {
-  final response = await http.get(
+  http.Response response = await http.get(
       'https://trungson.inapps.technology/rest/default/V1/products?searchCriteria[currentPage]=$currentPage&searchCriteria[pageSize]=$pageSize');
 
   if (response.statusCode == 200) {

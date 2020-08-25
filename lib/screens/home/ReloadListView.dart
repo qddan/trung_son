@@ -1,33 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:trung_son/constants.dart';
-import 'package:trung_son/helper/productHelper.dart';
 import 'package:trung_son/models/product/items.dart';
-import 'package:trung_son/models/product/product.dart';
 import 'package:trung_son/screens/home/components/Notifier.dart';
 import 'package:trung_son/screens/home/components/item_card.dart';
 
-class Body extends StatelessWidget {
-  // This widget is the root of your application.
+class ReloadListView extends StatefulWidget {
+  const ReloadListView({Key key}) : super(key: key);
+
   @override
-  Widget build(BuildContext context) {
-    return SafeArea(
-      child: BodyPage(),
-    );
-  }
+  _ReloadListViewState createState() => _ReloadListViewState();
 }
 
-class BodyPage extends StatefulWidget {
-  @override
-  _BodyPageState createState() => _BodyPageState();
-}
-
-class _BodyPageState extends State<BodyPage> {
-  Future<Product> futureProduct;
-  int currentPage = 1;
-  int pageSize = 5;
-  List<Items> originalItems = [];
-  List<Items> items = [];
-
+class _ReloadListViewState extends State<ReloadListView> {
   Notifier notifier;
 
   @override
@@ -35,10 +19,6 @@ class _BodyPageState extends State<BodyPage> {
     super.initState();
     notifier = Notifier();
     notifier.getMore();
-    futureProduct = getProducts(
-      currentPage: currentPage,
-      pageSize: pageSize,
-    );
   }
 
   @override
@@ -53,7 +33,7 @@ class _BodyPageState extends State<BodyPage> {
         valueListenable: notifier,
         builder: (BuildContext context, List<Items> value, Widget child) {
           return value == null
-              ? Center(child: Text("Loading ..."))
+              ? Center(child: CircularProgressIndicator())
               : RefreshIndicator(
                   color: kPrimaryColor,
                   onRefresh: () async {
@@ -89,60 +69,14 @@ class _BodyPageState extends State<BodyPage> {
                                 final file = item.mediaGalleryEntries[0].file;
                                 final imgPath =
                                     'https://trungson.inapps.technology/media/catalog/product/$file';
-                                return Column(
-                                  children: [
-                                    ItemProduct(
-                                      title: item.name,
-                                      imgPath: imgPath,
-                                      price: item.price,
-                                      isFavorite: false,
-                                    ),
-                                    index == value.length - 1
-                                        ? Padding(
-                                            padding: const EdgeInsets.all(8.0),
-                                            child: CircularProgressIndicator(
-                                              backgroundColor: kPrimaryColor,
-                                            ),
-                                          )
-                                        : Container(),
-                                  ],
+                                return ItemProduct(
+                                  title: item.name,
+                                  imgPath: imgPath,
+                                  price: item.price,
                                 );
                               }),
                         ),
                 );
         });
-  }
-
-//  child: FutureBuilder<Product>(
-//  future: futureProduct,
-//  builder: (context, snapshot) {
-//  if (snapshot.hasData) {
-//  final List<Items> items = snapshot.data.items;
-//  originalItems.addAll(items);
-//  return buildProducts(items: originalItems);
-//  } else if (snapshot.hasError) {
-//  print(snapshot.error);
-//  return Text("${snapshot.error}");
-//  }
-//  return CircularProgressIndicator();
-//  },
-//  ),
-
-  ListView buildProducts({List<Items> items}) {
-    return ListView.builder(
-      itemCount: items.length,
-      itemBuilder: (BuildContext context, int index) {
-        Items item = items[index];
-
-        final file = item.mediaGalleryEntries[0].file;
-        final imgPath =
-            'https://trungson.inapps.technology/media/catalog/product/$file';
-        return ItemProduct(
-          title: item.name,
-          imgPath: imgPath,
-          price: item.price,
-        );
-      },
-    );
   }
 }
